@@ -1,0 +1,50 @@
+
+
+,<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program</title>
+</head>
+<body>
+    <div style="width: 90%; margin: auto;padding: 20px; background-color: #efefec; border: 2px solid #efefec">
+        <h1>Add New Subject</h1>
+    </div>
+    <div style="width: 90%; margin: auto;padding: 20px; border: 2px solid #efefec;">
+    
+    <form method="post" action="/AddSubject/">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td><label for="programs">Subject Code: </label></td>
+                <td><input type="text" name="code" required></td>
+            </tr>
+            
+            <tr>
+                <td><label for="programs">Subject Name: </label></td>
+                <td><input type="text" name="name" required></td>
+            </tr>
+            
+            <tr>
+                
+                <td><label for="programs">Program: </label> </td>
+                <td>
+                    <select name="program" multiple>
+                        {% for sub in programs %}
+                    <option value="{{sub.id}}">{{sub}}</option>
+                    {% endfor %}
+                  </select>
+                </td>
+            </tr>
+            
+        </table>
+        <br>
+        <br>
+        <input type="submit" value="Submit" style="padding: 10px; font-weight:bolder; background-color: rgb(79, 142, 219); color: #ffffff; border: rgb(79, 142, 219); ">
+        <br>
+        <br>
+    </form>
+</div>
+</body>
+</html>

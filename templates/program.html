@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program</title>
+</head>
+<body>
+    <div style="width: 90%; margin: auto;padding: 20px;">
+        <a href="/AddProgram/"><button type="submit" value="Add new program" style="padding: 10px; float: right; ;">Add new program</button></a>
+    <h1  style="background-color:#dededc; padding: 20px; text-decoration-color: beige;">All programs</h1>
+
+
+<table style="width: 100%;">
+    <tr>
+        
+        <th style="width: 10%;">Program</th>
+        <th style="width: 30%;">Description</th>
+        <th style="width: 30%;">Duration</th>
+        <th style="width: 25%;">Eligibility Criteria</th>
+        <th style="width: 5%;">Credit Hours</th>
+    </tr>
+    {% for p in programs %}
+    <tr>
+        <td style="width: 10%; padding: 10px; border-top: 2px solid  #dededc;">{{p.programs}}</td>
+        <td style="width: 30%; padding: 10px; border-top: 2px solid  #dededc;">{{p.description}}</td>
+        <td style="width: 30%; padding: 10px; border-top: 2px solid  #dededc;">{{p.duration}}</td>
+        <td style="width: 25%; padding: 10px; border-top: 2px solid  #dededc;">{{p.eligibilityCriteria}}</td>
+        <td style="width: 5%; text-align: center; padding: 10px; border-top: 2px solid  #dededc;">{{p.creditHours}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+    
+</div>
+</body>
+</html>
+{% endblock %}

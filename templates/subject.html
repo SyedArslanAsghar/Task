@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subjects</title>
+</head>
+<body>
+    <div style="width: 90%; margin: auto;padding: 20px;">
+        <a href="/AddSubject/"><button type="submit" value="Add new program" style="padding: 10px; float: right; ;">Add new subject</button></a>
+    <h1  style="background-color:#dededc; padding: 20px; text-decoration-color: beige;">All subjects</h1>
+
+
+<table style="width: 100%;">
+    <tr>
+        
+        <th style="width: 20%; text-align: left;padding: 10px;">Subject Code</th>
+        <th style="width: 30%; text-align: left;padding: 10px;">Subject Name</th>
+        <th style="width: 30%; text-align: left;padding: 10px;">Program</th>
+        
+    </tr>
+    {% for p in subject %}
+    <tr>
+        <td style="width: 20%; padding: 10px; border-top: 2px solid  #dededc;">{{p.subject_code}}</td>
+        <td style="width: 30%; padding: 10px; border-top: 2px solid  #dededc;">{{p.subject_name}}</td>
+        <td style="width: 30%; padding: 10px; border-top: 2px solid  #dededc;">{{p.program}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+    
+</div>
+</body>
+</html>
+{% endblock %}

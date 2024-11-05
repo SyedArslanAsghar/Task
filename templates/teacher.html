@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teachers</title>
+</head>
+<body>
+    <div style="width: 90%; margin: auto;padding: 20px;">
+        <a href="/AddTeacher/"><button type="submit" value="Add new program" style="padding: 10px; float: right; ;">Add new teacher</button></a>
+    <h1  style="background-color:#dededc; padding: 20px; text-decoration-color: beige;">All Teachers</h1>
+
+
+<table style="width: 100%;">
+    <tr>
+        
+        <th style="width: 7%; text-align: left;padding: 10px; float: left;">Employee ID: </th>
+        <th style="width: 7%; text-align: left;padding: 10px; float: left;">First Name: </th>
+        <th style="width: 10%; text-align: left;padding: 10px; float: left;">Last Name: </th>
+        <th style="width: 10%; text-align: left;padding: 10px; float: left;">Email: </th>
+        <th style="width: 25%; text-align: left;padding: 10px; float: left;">Subjects: </th>
+        <th style="width: 30%; text-align: left;padding: 10px; float: left;">Programs: </th>
+        
+    </tr>
+    {% for p in teacher %}
+    <tr>
+        <td style="width: 7%; padding: 10px; border-top: 2px solid  #dededc; float: left;">{{p.teacher_employee_ID}}</td>
+        <td style="width: 7%; padding: 10px; border-top: 2px solid  #dededc; float: left;">{{p.teacher_first_name}}</td>
+        <td style="width: 10%; padding: 10px; border-top: 2px solid  #dededc; float: left;">{{p.teacher_last_name}}</td>
+        <td style="width: 10%; padding: 10px; border-top: 2px solid  #dededc; float: left;">{{p.teacher_email}}</td>
+        <!-- <td style="width: 15%; padding: 10px; border-top: 2px solid  #dededc;">{{p.subject}}</td> -->
+        <!-- <td style="width: 15%; padding: 10px; border-top: 2px solid  #dededc;">{{p.program}}</td> -->
+    <td style="width: 25%; padding: 10px; border-top: 2px solid #dededc; float: left;">
+        {% for subject in p.subject.all %}
+            {{ subject.subject_name }}{% if not forloop.last %}, {% endif %}
+        {% empty %}
+            None
+        {% endfor %}
+    </td>
+    
+    <!-- Display programs -->
+    <td style="width: 30%; padding: 10px; border-top: 2px solid #dededc; float: left;">
+        {% for program in p.program.all %}
+            {{ program.programs }}
+            {% if not forloop.last %}, {% endif %}
+        {% empty %}
+            None
+        {% endfor %}
+    </td>
+</tr>
+    {% endfor %}
+
+</table>
+
+    
+</div>
+</body>
+</html>
+{% endblock %}
